@@ -2,7 +2,7 @@
   "id": "foundry-talk",
   "title": "Foundry Talk",
   "description": "Embed a configured Nextcloud Talk room in Foundry VTT.",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "compatibility": {
     "minimum": "14",
     "verified": "14"

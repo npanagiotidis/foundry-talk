@@ -70,6 +70,48 @@ function mountTalkLauncher() {
   document.body.append(button);
 }
 
+function refreshTalkRoster() {
+  const roster = document.getElementById(`${MODULE_ID}-roster`);
+  if (!roster) {
+    return;
+  }
+
+  roster.replaceChildren();
+  const title = document.createElement("div");
+  title.className = `${MODULE_ID}__roster-title`;
+  title.textContent = "Foundry Talk";
+  roster.append(title);
+
+  for (const user of game.users.filter((user) => user.active)) {
+    const entry = document.createElement("div");
+    entry.className = `${MODULE_ID}__roster-entry`;
+
+    const indicator = document.createElement("span");
+    indicator.className = `${MODULE_ID}__presence`;
+    indicator.setAttribute("aria-hidden", "true");
+
+    const label = document.createElement("span");
+    label.textContent = user.character?.name ?? user.name;
+
+    entry.append(indicator, label);
+    roster.append(entry);
+  }
+}
+
+function mountTalkRoster() {
+  if (document.getElementById(`${MODULE_ID}-roster`)) {
+    refreshTalkRoster();
+    return;
+  }
+
+  const roster = document.createElement("aside");
+  roster.id = `${MODULE_ID}-roster`;
+  roster.className = `${MODULE_ID}__roster`;
+  roster.setAttribute("aria-label", "Foundry Talk roster");
+  document.body.append(roster);
+  refreshTalkRoster();
+}
+
 Hooks.once("init", () => {
   game.settings.register(MODULE_ID, "talkUrl", {
     name: "Nextcloud Talk room URL",
@@ -94,6 +136,9 @@ Hooks.once("init", () => {
 });
 
 Hooks.once("ready", mountTalkLauncher);
+Hooks.once("ready", mountTalkRoster);
+Hooks.on("userConnected", refreshTalkRoster);
+Hooks.on("updateUser", refreshTalkRoster);
 
 Hooks.on("getSceneControlButtons", (controls) => {
   controls[MODULE_ID] = {
