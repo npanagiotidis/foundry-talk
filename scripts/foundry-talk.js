@@ -96,18 +96,20 @@ Hooks.once("init", () => {
 Hooks.once("ready", mountTalkLauncher);
 
 Hooks.on("getSceneControlButtons", (controls) => {
-  controls.push({
+  controls[MODULE_ID] = {
     name: MODULE_ID,
     title: "Nextcloud Talk",
     icon: "fas fa-video",
-    layer: "controls",
+    order: 999,
     visible: Boolean(getTalkUrl()),
-    tools: [{
-      name: "open-talk",
+    tools: {
+      openTalk: {
+        name: "openTalk",
       title: "Open Nextcloud Talk",
       icon: "fas fa-video",
       button: true,
       onClick: openTalk
-    }]
-  });
+      }
+    }
+  };
 });
