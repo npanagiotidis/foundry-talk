@@ -1,0 +1,22 @@
+.foundry-talk.talk-window {
+  min-width: 360px;
+  min-height: 280px;
+}
+
+.foundry-talk .window-content {
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.foundry-talk__frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #111;
+}
+
+.foundry-talk__message {
+  margin: 1rem;
+}

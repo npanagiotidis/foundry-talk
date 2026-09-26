@@ -1,0 +1,11 @@
+{{#if talkUrl}}
+<iframe
+  class="foundry-talk__frame"
+  src="{{talkUrl}}"
+  title="Nextcloud Talk"
+  allow="camera; microphone; display-capture; fullscreen"
+  allowfullscreen
+></iframe>
+{{else}}
+<p class="foundry-talk__message">A valid Nextcloud Talk room URL has not been configured.</p>
+{{/if}}
