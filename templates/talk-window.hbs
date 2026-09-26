@@ -1,17 +1,19 @@
-{{#if talkUrl}}
-<nav class="foundry-talk__toolbar" aria-label="Talk controls">
-  <a class="foundry-talk__external-link" href="{{talkUrl}}" target="_blank" rel="noopener noreferrer">
-    <i class="fas fa-up-right-from-square" aria-hidden="true"></i>
-    <span>Open in Browser</span>
-  </a>
-</nav>
-<iframe
-  class="foundry-talk__frame"
-  src="{{talkUrl}}"
-  title="Nextcloud Talk"
-  allow="camera; microphone; display-capture; fullscreen"
-  allowfullscreen
-></iframe>
-{{else}}
-<p class="foundry-talk__message">A valid Nextcloud Talk room URL has not been configured.</p>
-{{/if}}
+<div class="foundry-talk__content">
+  {{#if talkUrl}}
+  <nav class="foundry-talk__toolbar" aria-label="Talk controls">
+    <a class="foundry-talk__external-link" href="{{talkUrl}}" target="_blank" rel="noopener noreferrer">
+      <i class="fas fa-up-right-from-square" aria-hidden="true"></i>
+      <span>Open in Browser</span>
+    </a>
+  </nav>
+  <iframe
+    class="foundry-talk__frame"
+    src="{{talkUrl}}"
+    title="Nextcloud Talk"
+    allow="camera; microphone; display-capture; fullscreen"
+    allowfullscreen
+  ></iframe>
+  {{else}}
+  <p class="foundry-talk__message">A valid Nextcloud Talk room URL has not been configured.</p>
+  {{/if}}
+</div>

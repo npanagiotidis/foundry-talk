@@ -3,10 +3,14 @@
   min-height: 280px;
 }
 
-.foundry-talk .window-content {
+.foundry-talk .window-content,
+.foundry-talk__content {
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+.foundry-talk .window-content {
   padding: 0;
   overflow: hidden;
 }
