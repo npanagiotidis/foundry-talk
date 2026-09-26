@@ -33,6 +33,8 @@ The Talk page must be allowed to run in an iframe on your Foundry origin. Config
 
 For reliable camera and microphone access, serve both Foundry and Nextcloud with HTTPS. The module intentionally leaves authentication to Nextcloud, so users sign in to their own Talk accounts inside the embedded page.
 
+If the Talk iframe is blank and the browser reports a `frame-ancestors` Content Security Policy error, configure Nextcloud or its reverse proxy to allow the public Foundry origin to embed Talk. Until then, use the **Open in Browser** link in the Talk window to join the call in a separate tab.
+
 ## Scope
 
 This module embeds Talk rather than replacing Foundry's native AV client. That keeps Talk's signaling, TURN/Janus configuration, account authentication, and participant handling under Nextcloud's control.
