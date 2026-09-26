@@ -55,6 +55,21 @@ function openTalk() {
   new TalkWindow().render({ force: true });
 }
 
+function mountTalkLauncher() {
+  if (document.getElementById(`${MODULE_ID}-launcher`)) {
+    return;
+  }
+
+  const button = document.createElement("button");
+  button.id = `${MODULE_ID}-launcher`;
+  button.className = `${MODULE_ID}__launcher`;
+  button.type = "button";
+  button.title = "Open Nextcloud Talk";
+  button.innerHTML = '<i class="fas fa-video" aria-hidden="true"></i><span>Talk</span>';
+  button.addEventListener("click", openTalk);
+  document.body.append(button);
+}
+
 Hooks.once("init", () => {
   game.settings.register(MODULE_ID, "talkUrl", {
     name: "Nextcloud Talk room URL",
@@ -62,7 +77,8 @@ Hooks.once("init", () => {
     scope: "world",
     config: true,
     type: String,
-    default: ""
+    default: "",
+    onChange: () => ui.controls?.render({ force: true })
   });
 
   game.keybindings.register(MODULE_ID, "openTalk", {
@@ -76,6 +92,8 @@ Hooks.once("init", () => {
     restricted: false
   });
 });
+
+Hooks.once("ready", mountTalkLauncher);
 
 Hooks.on("getSceneControlButtons", (controls) => {
   controls.push({

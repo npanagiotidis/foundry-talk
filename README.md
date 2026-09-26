@@ -1,6 +1,6 @@
 # Foundry Talk
 
-Foundry Talk opens a configured Nextcloud Talk conversation in a Foundry VTT v14 window. It adds a video control to the scene controls and a configurable `Ctrl+Shift+T` keybinding.
+Foundry Talk opens a configured Nextcloud Talk conversation in a Foundry VTT v14 window. It adds a persistent **Talk** launcher in the lower-right corner, a video control in the scene controls, and a configurable `Ctrl+Shift+T` keybinding.
 
 ## Installation
 
